@@ -40,6 +40,11 @@ if not which mullvad; then
 	yay -S --noconfirm --answerdiff=None mullvad-vpn
 fi
 
+# Install joplin
+if not which joplin-dekstop; then
+	yay -S --noconfirm --answerdiff=None joplin-appimage
+fi
+
 # Enable services
 sudo systemctl enable --now pcscd
 sudo systemctl enable --now vmware-horizon-usb
