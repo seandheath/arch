@@ -21,7 +21,8 @@ packages=(
 )
 
 # Install Pacman packages
-sudo yay -Syyu --noconfirm --answerdiff=None --norebuild $packages
+sudo pacman -Syyu --noconfirm yay
+yay -S --noconfirm --answerdiff=None --norebuild $packages
 
 # Install DoD Certificates
 if not test -d $HOME/.config/DoDCerts; then
@@ -38,15 +39,6 @@ if not test -f /usr/lib/vmware/view/pkcs11/libopenscpkcs11.so; then
 	sudo mkdir -p /usr/lib/vmware/view/pkcs11
 	sudo ln -s /usr/lib64/pkcs11/opensc-pkcs11.so /usr/lib/vmware/view/pkcs11/libopenscpkcs11.so
 fi
-
-# Install Yay packages
-#for pkg in ${yayPackages[@]}; do
-	#if yay -Pc | grep $pkg; then
-		#echo "Yay: $pkg already installed"
-		#yayPackages=("${yayPackages[@]/$pkg}")
-	#fi
-#done
-#yay -S --noconfirm --answerdiff=None $yayPackages
 
 # Enable services
 sudo systemctl enable --now pcscd
