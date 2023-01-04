@@ -2,7 +2,7 @@
 
 DODURL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/certificates_pkcs7_DoD.zip"
 
-pacmanPackages=(
+packages=(
 	neovim
 	firefox
 	git
@@ -16,14 +16,12 @@ pacmanPackages=(
 	ccid
 	unzip
 	wget
-)
-yayPackages=(
 	mullvad-vpn
 	joplin-desktop
 )
 
 # Install Pacman packages
-sudo pacman -Syyu --noconfirm $pacmanPackages
+sudo yay -Syyu --noconfirm --answerdiff=None --norebuild $packages
 
 # Install DoD Certificates
 if not test -d $HOME/.config/DoDCerts; then
@@ -42,13 +40,13 @@ if not test -f /usr/lib/vmware/view/pkcs11/libopenscpkcs11.so; then
 fi
 
 # Install Yay packages
-for pkg in ${yayPackages[@]}; do
-	if yay -Pc | grep $pkg; then
-		echo "Yay: $pkg already installed"
-		yayPackages=("${yayPackages[@]/$pkg}")
-	fi
-done
-yay -S --noconfirm --answerdiff=None $yayPackages
+#for pkg in ${yayPackages[@]}; do
+	#if yay -Pc | grep $pkg; then
+		#echo "Yay: $pkg already installed"
+		#yayPackages=("${yayPackages[@]/$pkg}")
+	#fi
+#done
+#yay -S --noconfirm --answerdiff=None $yayPackages
 
 # Enable services
 sudo systemctl enable --now pcscd
