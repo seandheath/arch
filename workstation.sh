@@ -3,6 +3,7 @@
 DODURL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/certificates_pkcs7_DoD.zip"
 
 packages=(
+	teams
 	system-config-printer
 	neovim
 	firefox
