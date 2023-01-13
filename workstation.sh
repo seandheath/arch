@@ -3,6 +3,9 @@
 DODURL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/certificates_pkcs7_DoD.zip"
 
 packages=(
+	tectonic
+	pandoc
+	freecad
 	teams
 	system-config-printer
 	neovim
