@@ -2,32 +2,12 @@
 
 DODURL="https://dl.dod.cyber.mil/wp-content/uploads/pki-pke/zip/certificates_pkcs7_DoD.zip"
 
-packages=(
-	tectonic
-	pandoc
-	freecad
-	teams
-	system-config-printer
-	neovim
-	firefox
-	git
-	inkscape
-	steam
-	nextcloud-client
-	bitwarden
-	yay
-	okular
-	opensc
-	ccid
-	unzip
-	wget
-	mullvad-vpn
-	joplin-desktop
-)
+pacmanPackages="yay code base-devel libdbus-1-dev pkg-config patch go tectonic pandoc freecad system-config-printer neovim firefox git inkscape steam nextcloud-client bitwarden okular opensc ccid unzip wget"
+yayPackages="mullvad-vpn-bin joplin-desktop teams"
 
 # Install Pacman packages
-sudo pacman -Syyu --noconfirm yay
-yay -S --noconfirm --answerdiff=None --norebuild $packages
+sudo pacman -Syyu --noconfirm $pacmanPackages
+yay -S --noconfirm --answerdiff=None --norebuild $yayPackages
 
 # Install DoD Certificates
 if not test -d $HOME/.config/DoDCerts; then
